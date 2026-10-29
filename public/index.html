@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusOrbit — Intelligent College Management Portal</title>
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪐</text></svg>">
+</head>
+<body>
+
+  <!-- =====================================================================
+       STAGE A & B: SIGNATURE OPENING EXPERIENCE (BRANDED SPLASH SCREEN)
+       ===================================================================== -->
+  <div id="splash-screen" role="dialog" aria-modal="true" aria-label="NexusOrbit Initializing">
+    <div class="splash-brand-wrap">
+      <!-- Original Vector Orbital Symbol -->
+      <div class="orbit-logo-mark" aria-hidden="true">
+        <div class="orbit-ring-outer"></div>
+        <div class="orbit-ring-inner">
+          <div class="orbit-satellite"></div>
+        </div>
+        <div class="orbit-core">
+          <div class="orbit-core-icon">🎓</div>
+        </div>
+      </div>
+
+      <!-- Typography Wordmark -->
+      <h1 class="splash-title">Nexus<span>Orbit</span></h1>
+      <p class="splash-subtitle">Intelligent Campus Management Portal</p>
+
+      <!-- Smooth Progress Indicator -->
+      <div class="splash-progress-track" aria-hidden="true">
+        <div class="splash-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       STAGE C: LOGIN SCREEN
+       ===================================================================== -->
+  <main id="login-screen" style="display: none;">
+    <div class="login-card-container">
+      <div class="login-header">
+        <div class="login-logo-lockup">
+          <div class="logo-icon-sm">🪐</div>
+          <div class="logo-text">Nexus<span>Orbit</span></div>
+        </div>
+        <h1>Campus Sign In</h1>
+        <p>Access your personalized college academic workspace</p>
+      </div>
+
+      <!-- Demonstration Mode Notice -->
+      <div class="alert-box alert-info">
+        <span>💡</span>
+        <span><strong>Hackathon Demonstration Mode:</strong> Use credentials or 1-click judge access below.</span>
+      </div>
+
+      <form id="login-form" onsubmit="App.handleLoginSubmit(event)" novalidate>
+        <div class="form-group">
+          <label for="login-email" class="form-label">Email or Campus Username</label>
+          <div class="input-wrapper">
+            <span class="input-icon" aria-hidden="true">✉️</span>
+            <input type="email" id="login-email" class="form-input" placeholder="e.g. student@nexusorbit.edu" value="student@nexusorbit.edu" required autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password" class="form-label">Password</label>
+          <div class="input-wrapper">
+            <span class="input-icon" aria-hidden="true">🔒</span>
+            <input type="password" id="login-password" class="form-input" value="demo123" required autocomplete="current-password" />
+            <button type="button" class="btn-password-toggle" onclick="App.togglePasswordVisibility()" aria-label="Toggle password visibility">
+              <span id="pwd-toggle-icon">👁️</span>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" id="btn-login-submit" class="btn-primary" style="margin-top: 0.5rem;">
+          Sign In to NexusOrbit
+        </button>
+      </form>
+
+      <!-- Hackathon Judges 1-Click Role Login Cards -->
+      <div class="demo-access-divider">
+        <span>Judge One-Click Access</span>
+      </div>
+
+      <div class="demo-roles-grid">
+        <button type="button" class="btn-demo-role" onclick="App.handleDemoLogin('admin')">
+          <div class="demo-role-avatar-wrap">
+            <img src="/assets/avatars/admin.jpg" alt="Dr. Vikram Malhotra" class="demo-role-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <span class="demo-role-avatar-fallback" style="display:none;">⚡</span>
+          </div>
+          <div>
+            <span class="demo-role-name">Administrator</span>
+            <span class="demo-role-desc">Dean Dr. Vikram Malhotra</span>
+          </div>
+        </button>
+
+        <button type="button" class="btn-demo-role" onclick="App.handleDemoLogin('faculty')">
+          <div class="demo-role-avatar-wrap">
+            <img src="/assets/avatars/faculty.jpg" alt="Prof. Anita Roy" class="demo-role-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <span class="demo-role-avatar-fallback" style="display:none;">🏛️</span>
+          </div>
+          <div>
+            <span class="demo-role-name">Faculty Lead</span>
+            <span class="demo-role-desc">Prof. Anita Roy (CSE HOD)</span>
+          </div>
+        </button>
+
+        <button type="button" class="btn-demo-role" onclick="App.handleDemoLogin('student')">
+          <div class="demo-role-avatar-wrap">
+            <img src="/assets/avatars/student.jpg" alt="Aarav Sharma" class="demo-role-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <span class="demo-role-avatar-fallback" style="display:none;">🎓</span>
+          </div>
+          <div>
+            <span class="demo-role-name">Student</span>
+            <span class="demo-role-desc">Aarav Sharma (2024CSE042)</span>
+          </div>
+        </button>
+
+        <button type="button" class="btn-demo-role" onclick="App.handleDemoLogin('parent')">
+          <div class="demo-role-avatar-wrap">
+            <img src="/assets/avatars/parent.jpg" alt="Rajesh Sharma" class="demo-role-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <span class="demo-role-avatar-fallback" style="display:none;">👨‍👧</span>
+          </div>
+          <div>
+            <span class="demo-role-name">Parent</span>
+            <span class="demo-role-desc">Rajesh Sharma (Linked Parent)</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- =====================================================================
+       APP SHELL: SIDEBAR, NAVBAR & VIEW CONTAINER
+       ===================================================================== -->
+  <div id="app-shell">
+    <!-- Sidebar Mount -->
+    <div id="sidebar-mount"></div>
+
+    <!-- Main App Content Area -->
+    <div class="app-main">
+      <!-- Navbar Mount -->
+      <div id="navbar-mount"></div>
+
+      <!-- Dynamic Page View Container -->
+      <main class="content-view" id="view-container" role="main"></main>
+    </div>
+
+    <!-- =====================================================================
+         AI CAMPUS ASSISTANT (FLOATING BUTTON & DRAWER)
+         ===================================================================== -->
+    <button id="btn-open-ai" class="btn-floating-ai" aria-label="Open AI Campus Assistant" onclick="window.AiAssistant && window.AiAssistant.toggle(true)">
+      <span>✨</span>
+      <span>Campus AI Assistant</span>
+    </button>
+
+    <aside id="ai-drawer" aria-label="Campus AI Assistant Drawer">
+      <div class="ai-drawer-header">
+        <div class="ai-drawer-title">
+          <div class="ai-avatar">🪐</div>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">NexusOrbit AI</div>
+            <div style="font-size: 0.7rem; opacity: 0.85;">Grounded in Verified Relational Data</div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <button class="btn-icon" id="btn-close-ai" style="background: rgba(255,255,255,0.15); border: none; color: #fff;" aria-label="Close AI Assistant" onclick="window.AiAssistant && window.AiAssistant.toggle(false)">✕</button>
+        </div>
+      </div>
+
+      <div class="ai-drawer-body" id="ai-messages-list"></div>
+
+      <div style="padding: 0.5rem 1.25rem;">
+        <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--text-subtle); margin-bottom: 0.35rem;">Suggested Queries:</div>
+        <div class="ai-suggestions" id="ai-suggestions-container">
+          <button type="button" class="suggestion-chip" onclick="window.AiAssistant.askPrompt('What is my attendance in Algorithms?')" data-prompt="What is my attendance in Algorithms?">📊 Algorithms Attendance?</button>
+          <button type="button" class="suggestion-chip" onclick="window.AiAssistant.askPrompt('What classes do I have today?')" data-prompt="What classes do I have today?">📅 Today's Classes?</button>
+          <button type="button" class="suggestion-chip" onclick="window.AiAssistant.askPrompt('What assignments are due?')" data-prompt="What assignments are due?">📝 Pending Coursework?</button>
+          <button type="button" class="suggestion-chip" onclick="window.AiAssistant.askPrompt('What is my remaining fee balance?')" data-prompt="What is my remaining fee balance?">💳 Fee Dues?</button>
+          <button type="button" class="suggestion-chip" onclick="window.AiAssistant.askPrompt('Show recent urgent notices')" data-prompt="Show recent urgent notices">📢 Urgent Notices?</button>
+        </div>
+      </div>
+
+      <div class="ai-drawer-footer">
+        <form id="ai-chat-form" style="display: flex; width: 100%; gap: 0.5rem;" onsubmit="event.preventDefault(); window.AiAssistant && window.AiAssistant.handleFormSubmit(); return false;">
+          <input type="text" id="ai-chat-input" class="ai-input" placeholder="Ask about attendance, timetable, fees, or exams..." autocomplete="off" />
+          <button type="button" id="btn-ai-send" class="btn-primary" style="width: auto; padding: 0.65rem 1rem;" onclick="window.AiAssistant && window.AiAssistant.handleFormSubmit();">
+            Send
+          </button>
+        </form>
+      </div>
+    </aside>
+  </div>
+
+  <!-- =====================================================================
+       GLOBAL MODAL DIALOGUE CONTAINER
+       ===================================================================== -->
+  <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true">
+    <div id="modal-mount"></div>
+  </div>
+
+  <!-- =====================================================================
+       ACCESSIBLE TOAST NOTIFICATIONS CONTAINER
+       ===================================================================== -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Application Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/splash.js"></script>
+  <script src="/js/components/charts.js"></script>
+  <script src="/js/components/navbar.js"></script>
+  <script src="/js/components/sidebar.js"></script>
+  <script src="/js/components/ai-assistant.js"></script>
+  <script src="/js/views/admin-view.js"></script>
+  <script src="/js/views/faculty-view.js"></script>
+  <script src="/js/views/student-view.js"></script>
+  <script src="/js/views/parent-view.js"></script>
+  <script src="/js/views/attendance-view.js"></script>
+  <script src="/js/views/marks-view.js"></script>
+  <script src="/js/views/timetable-view.js"></script>
+  <script src="/js/views/assignments-view.js"></script>
+  <script src="/js/views/notices-view.js"></script>
+  <script src="/js/views/fees-view.js"></script>
+  <script src="/js/views/analytics-view.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>
